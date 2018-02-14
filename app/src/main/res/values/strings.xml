@@ -29,32 +29,32 @@
     <string name="category_family">Family Members</string>
 
     <!-- Number in English -->
-    <string name="numbers_1">one</string>
+    <string name="numbers_one">one</string>
 
     <!-- Number in English -->
-    <string name="numbers_2">two</string>
+    <string name="numbers_two">two</string>
 
     <!-- Number in English -->
-    <string name="numbers_3">three</string>
+    <string name="numbers_three">three</string>
 
     <!-- Number in English -->
-    <string name="numbers_4">four</string>
+    <string name="numbers_four">four</string>
 
     <!-- Number in English -->
-    <string name="numbers_5">five</string>
+    <string name="numbers_five">five</string>
 
     <!-- Number in English -->
-    <string name="numbers_6">six</string>
+    <string name="numbers_six">six</string>
 
     <!-- Number in English -->
-    <string name="numbers_7">seven</string>
+    <string name="numbers_seven">seven</string>
 
     <!-- Number in English -->
-    <string name="numbers_8">eight</string>
+    <string name="numbers_eight">eight</string>
 
     <!-- Number in English -->
-    <string name="numbers_9">nine</string>
+    <string name="numbers_nine">nine</string>
 
     <!-- Number in English -->
-    <string name="numbers_10">ten</string>
+    <string name="numbers_ten">ten</string>
 </resources>
