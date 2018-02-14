@@ -27,4 +27,34 @@
 
     <!-- Category name for the vocabulary words for family members [CHAR LIMIT=20] -->
     <string name="category_family">Family Members</string>
+
+    <!-- Number in English -->
+    <string name="numbers_1">one</string>
+
+    <!-- Number in English -->
+    <string name="numbers_2">two</string>
+
+    <!-- Number in English -->
+    <string name="numbers_3">three</string>
+
+    <!-- Number in English -->
+    <string name="numbers_4">four</string>
+
+    <!-- Number in English -->
+    <string name="numbers_5">five</string>
+
+    <!-- Number in English -->
+    <string name="numbers_6">six</string>
+
+    <!-- Number in English -->
+    <string name="numbers_7">seven</string>
+
+    <!-- Number in English -->
+    <string name="numbers_8">eight</string>
+
+    <!-- Number in English -->
+    <string name="numbers_9">nine</string>
+
+    <!-- Number in English -->
+    <string name="numbers_10">ten</string>
 </resources>
