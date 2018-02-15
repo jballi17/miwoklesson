@@ -1,36 +1,29 @@
 package com.example.android.miwok;
 
-/**
- * Created by Josh on 2/14/2018.
+/**  Word class holds the translation of both the default language of the user and the miwok
+ *   translation
  */
 
 public class Word {
-    private String defaultWord;
-    private String miwokWord;
+    private String mDefaultTranslation;
+    private String mMiwokTranslation;
 
-    public Word(){
-        this.defaultWord = "";
-        this.miwokWord = "";
+    //  Creates Word object
+    //  Pre: (String, String)
+    public Word(String defaultTranslation, String miwokTranslation){
+        this.mDefaultTranslation = defaultTranslation;
+        this.mMiwokTranslation = miwokTranslation;
     }
 
-    public Word(String defaultWord, String miwokWord){
-        this.defaultWord = defaultWord;
-        this.miwokWord = miwokWord;
-    }
-
+    //  Returns default translation of word
+    //  Returns String
     public String getDefaultTranslation(){
-        return this.defaultWord;
+        return this.mDefaultTranslation;
     }
 
+    //  Returns miwok translation of word
+    //  Returns String
     public String getMiwokTranslation(){
-        return this.miwokWord;
-    }
-
-    public void setDefaultWord(String defaultWord){
-        this.defaultWord = defaultWord;
-    }
-
-    public void setMiwokWord(String miwokWord){
-        this.miwokWord = miwokWord;
+        return this.mMiwokTranslation;
     }
 }
