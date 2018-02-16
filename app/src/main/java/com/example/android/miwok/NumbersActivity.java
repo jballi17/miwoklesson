@@ -18,26 +18,25 @@ public class NumbersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_numbers);
 
-        //  Add code here for Numbers ArrayList<String>
-        ArrayList<String> words = new ArrayList<String>();
+        //  Add code here for Numbers ArrayList<Word>
+        ArrayList<Word> words = new ArrayList<Word>();
 
-        //  Populate ArrayList<String> with english numbers from string.xml
-        words.add(getString(R.string.numbers_one));
-        words.add(getString(R.string.numbers_two));
-        words.add(getString(R.string.numbers_three));
-        words.add(getString(R.string.numbers_four));
-        words.add(getString(R.string.numbers_five));
-        words.add(getString(R.string.numbers_six));
-        words.add(getString(R.string.numbers_seven));
-        words.add(getString(R.string.numbers_eight));
-        words.add(getString(R.string.numbers_nine));
-        words.add(getString(R.string.numbers_ten));
+        //  Populate ArrayList<Word> with english numbers
+        words.add(new Word("one", "lutti"));
+        words.add(new Word("two", "otiiko"));
+        words.add(new Word("three", "tolookosu"));
+        words.add(new Word("four", "oyyisa"));
+        words.add(new Word("five", "massokka"));
+        words.add(new Word("six", "temmokka"));
+        words.add(new Word("seven", "kenekaku"));
+        words.add(new Word("eight", "kawinta"));
+        words.add(new Word("nine", "wo'e"));
+        words.add(new Word("ten", "na'aacha"));
 
-        ArrayAdapter<String> itemsAdapter =
-                new ArrayAdapter<String>(this,R.layout.list_item,words);
+        WordAdapter adapter = new WordAdapter(this,words);
 
         ListView listView = (ListView) findViewById(R.id.list);
 
-        listView.setAdapter(itemsAdapter);
+        listView.setAdapter(adapter);
     }
 }
