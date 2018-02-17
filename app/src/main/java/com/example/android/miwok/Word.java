@@ -7,22 +7,20 @@ package com.example.android.miwok;
 public class Word {
     private String mDefaultTranslation;
     private String mMiwokTranslation;
-    private int mImageResourceID;
-    private boolean mHasImage;
+    private int mImageResourceID = NO_IMAGE_PROVIDED;
+    private static final int NO_IMAGE_PROVIDED = -1;
 
     //  Creates Word object
     //  Pre: (String, String)
     public Word(String defaultTranslation, String miwokTranslation){
         this.mDefaultTranslation = defaultTranslation;
         this.mMiwokTranslation = miwokTranslation;
-        this.mHasImage = false;
     }
 
     public Word(String defaultTranslation, String miwokTranslation, int imageResourceID){
         this.mDefaultTranslation = defaultTranslation;
         this.mMiwokTranslation = miwokTranslation;
         this.mImageResourceID = imageResourceID;
-        this.mHasImage = true;
     }
 
     //  Returns default translation of word
@@ -46,6 +44,6 @@ public class Word {
     //  Returns true if Word object has image associated with it
     //  returns boolean
     public boolean hasImage(){
-        return this.mHasImage;
+        return this.mImageResourceID != NO_IMAGE_PROVIDED;
     }
 }
