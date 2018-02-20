@@ -18,9 +18,12 @@ import java.util.ArrayList;
  */
 
 public class WordAdapter extends ArrayAdapter<Word> {
-    public WordAdapter(Activity context, ArrayList<Word> words){
+    public WordAdapter(Activity context, ArrayList<Word> words, int textBackgroundColor){
         super(context, 0, words);
+        setTextBackgroundColor(textBackgroundColor);
     }
+
+    private int mTextBackgroundColor;
 
     @NonNull
     @Override
@@ -57,8 +60,19 @@ public class WordAdapter extends ArrayAdapter<Word> {
         } else {
             defaultImageView.setVisibility(View.GONE);
         }
+
+        //  Tests for Text Background Color
+        if(mTextBackgroundColor >= 0){
+            defaultTranslationTextView.setBackgroundResource(mTextBackgroundColor);
+            miwokTranslationTextView.setBackgroundResource(mTextBackgroundColor);
+        }
         //  Return the whole list item layout (containing 2 TextViews)
         //  It can be shown in ListView
         return listItemView;
+    }
+
+    //  Sets the background color of the TextView objects in adapter set
+    public void setTextBackgroundColor(int backgroundColor){
+        this.mTextBackgroundColor = backgroundColor;
     }
 }

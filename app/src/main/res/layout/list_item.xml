@@ -16,15 +16,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center_vertical"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:background="@color/category_numbers">
+        android:gravity="center_vertical">
 
         <TextView
             android:id="@+id/miwok_text_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/half_list_item_height"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:gravity="bottom"
             android:textColor="@android:color/white"
             android:textStyle="bold"
             android:textAppearance="?android:textAppearanceMedium"/>
@@ -32,7 +32,10 @@
         <TextView
             android:id="@+id/default_text_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/half_list_item_height"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:gravity="top"
             android:textColor="@android:color/white"
             android:textAppearance="?android:textAppearanceMedium"/>
 
