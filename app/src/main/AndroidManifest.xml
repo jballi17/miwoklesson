@@ -31,7 +31,7 @@
         </activity>
         <activity
             android:name=".PhrasesActivity"
-            android:label="@string/category_phrases" />
+            android:label="@string/category_phrases"/>
         <activity
             android:name=".NumbersActivity"
             android:label="@string/category_numbers" />

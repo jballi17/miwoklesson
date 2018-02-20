@@ -51,4 +51,20 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
     </style>
+
+    <style name="ColorNumbers">
+        <item name="android:background">@color/category_numbers</item>
+    </style>
+
+    <style name="ColorColors">
+        <item name="android:background">@color/category_colors</item>
+    </style>
+
+    <style name="ColorFamily">
+        <item name="android:background">@color/category_family</item>
+    </style>
+
+    <style name="ColorPhrases">
+        <item name="android:background">@color/category_phrases</item>
+    </style>
 </resources>

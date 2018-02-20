@@ -33,5 +33,6 @@ public class NumbersActivity extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.list);
 
         listView.setAdapter(adapter);
+        listView.setBackgroundColor(getResources().getColor(R.color.category_numbers));
     }
 }
