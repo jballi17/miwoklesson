@@ -15,13 +15,13 @@
         android:id="@+id/text_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center_vertical">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/miwok_text_view"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/half_list_item_height"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:gravity="bottom"
@@ -32,7 +32,8 @@
         <TextView
             android:id="@+id/default_text_view"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/half_list_item_height"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:gravity="top"
@@ -40,4 +41,12 @@
             android:textAppearance="?android:textAppearanceMedium"/>
 
     </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/playButton"
+        android:layout_width="@android:dimen/app_icon_size"
+        android:layout_height="@android:dimen/app_icon_size"
+        android:layout_weight="1"
+        android:drawable="@android:drawable/ic_media_play"/>
+
 </LinearLayout>

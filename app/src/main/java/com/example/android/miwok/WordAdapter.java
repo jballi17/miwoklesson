@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -61,6 +63,9 @@ public class WordAdapter extends ArrayAdapter<Word> {
             defaultImageView.setVisibility(View.GONE);
         }
 
+        //  Set the player button
+        ImageButton playButton = (ImageButton) listItemView.findViewById(R.id.playButton);
+
         //  Tests for Text Background Color
         if(mTextBackgroundColor >= 0){
             defaultTranslationTextView.setBackgroundResource(mTextBackgroundColor);
@@ -68,6 +73,7 @@ public class WordAdapter extends ArrayAdapter<Word> {
         }
         //  Return the whole list item layout (containing 2 TextViews)
         //  It can be shown in ListView
+
         return listItemView;
     }
 

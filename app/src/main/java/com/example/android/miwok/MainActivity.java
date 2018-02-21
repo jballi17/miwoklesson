@@ -90,10 +90,4 @@ public class MainActivity extends AppCompatActivity {
            }
         });
     }
-
-        public void openNumbersList(View view){
-        //TODO: Write your code here
-            Intent i = new Intent(this, NumbersActivity.class);
-            startActivity(i);
-    }
 }
