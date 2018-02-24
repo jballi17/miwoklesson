@@ -1,9 +1,17 @@
 package com.example.android.miwok;
 
+import android.app.Activity;
+import android.media.MediaDataSource;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import java.io.FileDescriptor;
 import java.util.ArrayList;
 
 public class NumbersActivity extends AppCompatActivity {
@@ -30,7 +38,24 @@ public class NumbersActivity extends AppCompatActivity {
 
         WordAdapter adapter = new WordAdapter(this,words,R.color.category_numbers);
 
-        ListView listView = (ListView) findViewById(R.id.list);
+        final ListView listView = (ListView) findViewById(R.id.list);
+
+        // Create MediaPlayer
+
+
+
+
+        // Set onClickListener
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView adapterView, View view, int i, long l) {
+                Toast.makeText(getApplicationContext(), "Running sound",
+                        Toast.LENGTH_SHORT).show();
+                MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.number_one);
+                mediaPlayer.start();
+            }
+        });
 
         listView.setAdapter(adapter);
     }

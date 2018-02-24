@@ -42,11 +42,4 @@
 
     </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/playButton"
-        android:layout_width="@android:dimen/app_icon_size"
-        android:layout_height="@android:dimen/app_icon_size"
-        android:layout_weight="1"
-        android:drawable="@android:drawable/ic_media_play"/>
-
 </LinearLayout>

@@ -63,9 +63,6 @@ public class WordAdapter extends ArrayAdapter<Word> {
             defaultImageView.setVisibility(View.GONE);
         }
 
-        //  Set the player button
-        ImageButton playButton = (ImageButton) listItemView.findViewById(R.id.playButton);
-
         //  Tests for Text Background Color
         if(mTextBackgroundColor >= 0){
             defaultTranslationTextView.setBackgroundResource(mTextBackgroundColor);
