@@ -15,6 +15,7 @@ import java.io.FileDescriptor;
 import java.util.ArrayList;
 
 public class NumbersActivity extends AppCompatActivity {
+    private MediaPlayer mMediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,10 +51,8 @@ public class NumbersActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView adapterView, View view, int i, long l) {
-                Toast.makeText(getApplicationContext(), "Running sound",
-                        Toast.LENGTH_SHORT).show();
-                MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.number_one);
-                mediaPlayer.start();
+                mMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.number_one);
+                mMediaPlayer.start();
             }
         });
 
