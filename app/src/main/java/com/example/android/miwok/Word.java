@@ -54,4 +54,14 @@ public class Word {
     public boolean hasImage(){
         return this.mImageResourceID != NO_IMAGE_PROVIDED;
     }
+
+    @Override
+    public String toString() {
+        return "Word{" +
+                "mDefaultTranslation='" + mDefaultTranslation + '\'' +
+                ", mMiwokTranslation='" + mMiwokTranslation + '\'' +
+                ", mAudioResourceID=" + mAudioResourceID +
+                ", mImageResourceID=" + mImageResourceID +
+                '}';
+    }
 }
