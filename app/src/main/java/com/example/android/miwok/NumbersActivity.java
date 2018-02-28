@@ -20,22 +20,44 @@ import java.util.ArrayList;
 public class NumbersActivity extends AppCompatActivity {
     private MediaPlayer mMediaPlayer;
 
-    private MediaPlayer.OnCompletionListener mCompletionListener = new MediaPlayer.OnCompletionListener(){
+    private MediaPlayer.OnCompletionListener mCompletionListener =
+            new MediaPlayer.OnCompletionListener(){
         @Override
         public void onCompletion(MediaPlayer mp) {
             releaseMediaPlayer();
         }
     };
 
-    //  Create AudioManager
-    private AudioManager audioManager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
-    private AudioManager.OnAudioFocusChangeListener afChangeListener;
+    //  Create the AudioFocusChangeListener and it's state responses
+    //  to handle media and it's focus changes to play/pause,
+    //  and handle timing of releasing media resources
+    private AudioManager.OnAudioFocusChangeListener mAudioFocusChangeListener =
+            new AudioManager.OnAudioFocusChangeListener() {
+        @Override
+        public void onAudioFocusChange(int focusChange) {
+            if (focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT ||
+                    focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK) {
+                // Pause playback immediately
+                mMediaPlayer.pause();
+                //  Reset playback to it's beginning
+                mMediaPlayer.seekTo(0);
+            } else if (focusChange == AudioManager.AUDIOFOCUS_GAIN) {
+                // Begin playback
+                mMediaPlayer.start();
+            } else if (focusChange == AudioManager.AUDIOFOCUS_LOSS) {
+                //  AudioFocus is lost, release mMediaPlayer and resources
+                releaseMediaPlayer();
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.word_list);
 
+        //  Create AudioManager
+        final AudioManager mAudioManager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
 
 
         //  Add code here for Numbers ArrayList<Word>
@@ -78,7 +100,7 @@ public class NumbersActivity extends AppCompatActivity {
                         words.get(i).getAudioResourceID());
 
                 // Request audio focus for playback
-                int result = audioManager.requestAudioFocus(afChangeListener,
+                int result = mAudioManager.requestAudioFocus(mAudioFocusChangeListener,
                         // Use the music stream.
                         AudioManager.STREAM_MUSIC,
                         // Request temporary focus.
@@ -114,11 +136,6 @@ public class NumbersActivity extends AppCompatActivity {
             // setting the media player to null is an easy way to tell that the media player
             // is not configured to play an audio file at the moment.
             mMediaPlayer = null;
-        }
-
-        if (afChangeListener != null) {
-            // Abandon audio focus when playback complete
-            audioManager.abandonAudioFocus(afChangeListener);
         }
     }
 }
