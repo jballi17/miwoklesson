@@ -1,6 +1,8 @@
 package com.example.android.miwok;
 
 import android.app.Activity;
+import android.content.Context;
+import android.media.AudioManager;
 import android.media.MediaDataSource;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -25,10 +27,16 @@ public class NumbersActivity extends AppCompatActivity {
         }
     };
 
+    //  Create AudioManager
+    private AudioManager audioManager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
+    private AudioManager.OnAudioFocusChangeListener afChangeListener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.word_list);
+
+
 
         //  Add code here for Numbers ArrayList<Word>
         final ArrayList<Word> words = new ArrayList<Word>();
@@ -68,9 +76,20 @@ public class NumbersActivity extends AppCompatActivity {
                 releaseMediaPlayer();
                 mMediaPlayer = MediaPlayer.create(getApplicationContext(),
                         words.get(i).getAudioResourceID());
-                mMediaPlayer.start();
-                //  Set onCompletionListener to release memory after sound finishes playing
-                mMediaPlayer.setOnCompletionListener(mCompletionListener);
+
+                // Request audio focus for playback
+                int result = audioManager.requestAudioFocus(afChangeListener,
+                        // Use the music stream.
+                        AudioManager.STREAM_MUSIC,
+                        // Request temporary focus.
+                        AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
+
+                if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
+                    // Start playback
+                    mMediaPlayer.start();
+                    //  Set onCompletionListener to release memory after sound finishes playing
+                    mMediaPlayer.setOnCompletionListener(mCompletionListener);
+                }
             }
         });
     }
@@ -95,6 +114,11 @@ public class NumbersActivity extends AppCompatActivity {
             // setting the media player to null is an easy way to tell that the media player
             // is not configured to play an audio file at the moment.
             mMediaPlayer = null;
+        }
+
+        if (afChangeListener != null) {
+            // Abandon audio focus when playback complete
+            audioManager.abandonAudioFocus(afChangeListener);
         }
     }
 }
