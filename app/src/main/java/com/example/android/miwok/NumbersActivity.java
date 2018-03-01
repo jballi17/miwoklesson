@@ -39,14 +39,18 @@ public class NumbersActivity extends AppCompatActivity {
                     focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK) {
                 // Pause playback immediately
                 mMediaPlayer.pause();
+                Log.v("onAudioFocusChange", "Paused()");
                 //  Reset playback to it's beginning
                 mMediaPlayer.seekTo(0);
+                Log.v("onAudioFocusChange", "MediaPlayer, seek set to beginning");
             } else if (focusChange == AudioManager.AUDIOFOCUS_GAIN) {
                 // Begin playback
                 mMediaPlayer.start();
+                Log.v("onAudioFocusChange", "MediaPlayer started");
             } else if (focusChange == AudioManager.AUDIOFOCUS_LOSS) {
                 //  AudioFocus is lost, release mMediaPlayer and resources
                 releaseMediaPlayer();
+                Log.v("onAudioFocusChange", "MediaPlayer & resources released");
             }
         }
     };
@@ -58,7 +62,6 @@ public class NumbersActivity extends AppCompatActivity {
 
         //  Create AudioManager
         final AudioManager mAudioManager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
-
 
         //  Add code here for Numbers ArrayList<Word>
         final ArrayList<Word> words = new ArrayList<Word>();
@@ -109,6 +112,7 @@ public class NumbersActivity extends AppCompatActivity {
                 if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
                     // Start playback
                     mMediaPlayer.start();
+                    Log.v("onItemClick", "MediaPlayer Started");
                     //  Set onCompletionListener to release memory after sound finishes playing
                     mMediaPlayer.setOnCompletionListener(mCompletionListener);
                 }
