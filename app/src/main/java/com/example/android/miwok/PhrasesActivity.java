@@ -131,6 +131,9 @@ public class PhrasesActivity extends AppCompatActivity {
             // setting the media player to null is an easy way to tell that the media player
             // is not configured to play an audio file at the moment.
             mMediaPlayer = null;
+
+            //  Release Audio Focus when finished with music playing
+            mAudioManager.abandonAudioFocus(mAudioFocusChangeListener);
         }
     }
 }
