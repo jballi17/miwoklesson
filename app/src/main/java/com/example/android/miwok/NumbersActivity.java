@@ -33,27 +33,23 @@ public class NumbersActivity extends AppCompatActivity {
     //  and handle timing of releasing media resources
     private AudioManager.OnAudioFocusChangeListener mAudioFocusChangeListener =
             new AudioManager.OnAudioFocusChangeListener() {
-        @Override
-        public void onAudioFocusChange(int focusChange) {
-            if (focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT ||
-                    focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK) {
-                // Pause playback immediately
-                mMediaPlayer.pause();
-                Log.v("onAudioFocusChange", "Paused()");
-                //  Reset playback to it's beginning
-                mMediaPlayer.seekTo(0);
-                Log.v("onAudioFocusChange", "MediaPlayer, seek set to beginning");
-            } else if (focusChange == AudioManager.AUDIOFOCUS_GAIN) {
-                // Begin playback
-                mMediaPlayer.start();
-                Log.v("onAudioFocusChange", "MediaPlayer started");
-            } else if (focusChange == AudioManager.AUDIOFOCUS_LOSS) {
-                //  AudioFocus is lost, release mMediaPlayer and resources
-                releaseMediaPlayer();
-                Log.v("onAudioFocusChange", "MediaPlayer & resources released");
-            }
-        }
-    };
+                @Override
+                public void onAudioFocusChange(int focusChange) {
+                    if (focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT ||
+                            focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK) {
+                        // Pause playback immediately
+                        mMediaPlayer.pause();
+                        //  Reset playback to it's beginning
+                        mMediaPlayer.seekTo(0);
+                    } else if (focusChange == AudioManager.AUDIOFOCUS_GAIN) {
+                        // Begin playback
+                        mMediaPlayer.start();
+                    } else if (focusChange == AudioManager.AUDIOFOCUS_LOSS) {
+                        //  AudioFocus is lost, release mMediaPlayer and resources
+                        releaseMediaPlayer();
+                    }
+                }
+            };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,7 +108,6 @@ public class NumbersActivity extends AppCompatActivity {
                 if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
                     // Start playback
                     mMediaPlayer.start();
-                    Log.v("onItemClick", "MediaPlayer Started");
                     //  Set onCompletionListener to release memory after sound finishes playing
                     mMediaPlayer.setOnCompletionListener(mCompletionListener);
                 }
