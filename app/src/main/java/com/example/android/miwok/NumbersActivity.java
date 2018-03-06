@@ -1,24 +1,18 @@
 package com.example.android.miwok;
 
-import android.app.Activity;
 import android.content.Context;
 import android.media.AudioManager;
-import android.media.MediaDataSource;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
-
-import java.io.FileDescriptor;
 import java.util.ArrayList;
 
 public class NumbersActivity extends AppCompatActivity {
     private MediaPlayer mMediaPlayer;
+    private AudioManager mAudioManager;
 
     private MediaPlayer.OnCompletionListener mCompletionListener =
             new MediaPlayer.OnCompletionListener(){
@@ -57,7 +51,7 @@ public class NumbersActivity extends AppCompatActivity {
         setContentView(R.layout.word_list);
 
         //  Create AudioManager
-        final AudioManager mAudioManager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
+        mAudioManager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
 
         //  Add code here for Numbers ArrayList<Word>
         final ArrayList<Word> words = new ArrayList<Word>();

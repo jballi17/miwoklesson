@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 public class PhrasesActivity extends AppCompatActivity {
     private MediaPlayer mMediaPlayer;
+    private AudioManager mAudioManager;
 
     private MediaPlayer.OnCompletionListener mCompletionListener =
             new MediaPlayer.OnCompletionListener(){
@@ -51,7 +52,7 @@ public class PhrasesActivity extends AppCompatActivity {
         setContentView(R.layout.word_list);
 
         //  Create AudioManager
-        final AudioManager mAudioManager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
+        mAudioManager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
 
         //  Add code here for Numbers ArrayList<Word>
         final ArrayList<Word> words = new ArrayList<Word>();
