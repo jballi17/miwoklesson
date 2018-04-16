@@ -30,4 +30,21 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
     </style>
+
+    <!-- TabLayout custom style  -->
+    <style name="Custom_TabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabMaxWidth">0dp</item>
+        <item name="tabGravity">fill</item>
+        <item name="tabMode">fixed</item>
+        <item name="tabBackground">@color/primary_color</item>
+        <item name="tabTextAppearance">@style/Custom_TabLayout_Text_Appearance</item>
+        <item name="tabSelectedTextColor">@android:color/white</item>
+        <item name="tabIndicatorColor">@android:color/white</item>
+    </style>
+
+    <style name="Custom_TabLayout_Text_Appearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/tab_text_color</item>
+    </style>
+
 </resources>
