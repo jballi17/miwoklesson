@@ -5,7 +5,9 @@ import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,10 +53,36 @@ public class NumbersFragment extends Fragment {
                 }
             };
 
+
+    public static final String ARG_PAGE = "ARG_PAGE";
+
+    private int mPage;
+
     public NumbersFragment() {
         // Required empty public constructor
     }
 
+    public static NumbersFragment newInstance(int page) {
+        Bundle args = new Bundle();
+        args.putInt(ARG_PAGE, page);
+        NumbersFragment fragment = new NumbersFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        try {
+            //  Causes NullPointerException
+            mPage = getArguments().getInt(ARG_PAGE);
+        }
+        catch (NullPointerException e) {
+            Log.v("Exception",
+                    "NullPointerException Thrown and caught");
+        }
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
